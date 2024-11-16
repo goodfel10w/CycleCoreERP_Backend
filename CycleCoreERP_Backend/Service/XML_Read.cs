@@ -13,6 +13,7 @@ namespace CycleCoreERP_Backend.Service
         public static void xmlRead(string xml)
         {
             var xmlSerializer = new XmlSerializer(typeof(Models.Results), new XmlRootAttribute("results"));
+            // Umwandlung in ein String ist später nicht mehr notwendig
             string xmlContent = File.ReadAllText(xml);
             byte[] byteArray = Encoding.ASCII.GetBytes(xmlContent);
 
@@ -20,6 +21,11 @@ namespace CycleCoreERP_Backend.Service
 
             var result = (Models.Results)xmlSerializer.Deserialize(stream);
             _pr = result;
+        }
+
+        public static int GetArtikelBestand(int id)
+        {
+            return _pr.warehousestock.article.Single(artikel => artikel.id == id).amount;
         }
     }
 }
