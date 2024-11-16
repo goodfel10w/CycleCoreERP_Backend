@@ -1,25 +1,24 @@
-using System;
-using System.Xml.Serialization;
 using CycleCoreERP_Backend.Models;
-using System.IO;
+using System.Xml.Serialization;
 using System.Text;
+using System.IO;
+
 
 namespace CycleCoreERP_Backend.Service
 {
     public static class XMLService
     {
-        private static PeriodenResult _pr;
+        private static Models.Results _pr;
 
         public static void xmlRead(string xml)
         {
+            var xmlSerializer = new XmlSerializer(typeof(Models.Results), new XmlRootAttribute("results"));
+            string xmlContent = File.ReadAllText(xml);
+            byte[] byteArray = Encoding.ASCII.GetBytes(xmlContent);
 
+            MemoryStream stream = new MemoryStream(byteArray);
 
-            var xmlSerializer = new XmlSerializer(typeof(PeriodenResult), new XmlRootAttribute("PeriodenResult"));
-
-            string xmlContent = File.ReadAllText(filePath);
-            Console.WriteLine("XML Content: " + xmlContent);
-
-            var result = (PeriodenResult)xmlSerializer.Deserialize(xmlContent);
+            var result = (Models.Results)xmlSerializer.Deserialize(stream);
             _pr = result;
         }
     }

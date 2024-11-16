@@ -28,12 +28,15 @@ app.Run(); */
 
 
 using CycleCoreERP_Backend.Service;
-class Programm
+namespace CycleCoreERP_Backend.Main
 {
-    static void Main(string[] args)
+    class Programm
     {
+        static void Main(string[] args)
+        {
 
-        const string xmlFilePath = "./xml-files/result/54_5_4result.xml";
-        XMLService.xmlRead(xmlFilePath);
+            const string xmlFilePath = "./xml-files/result/54_5_4result.xml";
+            XMLService.xmlRead(xmlFilePath);
+        }
     }
 }
