@@ -1,4 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
+/* var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -24,4 +24,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+app.Run(); */
+
+using System;
+using System.Xml.Serialization;
+using CycleCoreERP_Backend.Models;
+
+static void Main(string[] args)
+{
+    var xmlSerializer = new XmlSerializer(typeof(PeriodenResult));
+}
