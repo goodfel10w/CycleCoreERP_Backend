@@ -2,6 +2,7 @@ using CycleCoreERP_Backend.Models;
 using System.Xml.Serialization;
 using System.Text;
 using System.IO;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace CycleCoreERP_Backend.Service
@@ -26,6 +27,34 @@ namespace CycleCoreERP_Backend.Service
         public static int GetArtikelBestand(int id)
         {
             return _pr.warehousestock.article.Single(artikel => artikel.id == id).amount;
+        }
+
+        public static int GetAnzahlArtikelInWarteschlangen(int id)
+        {
+            return _pr.waitinglistworkstations
+            .Where(arbeitsplatz => arbeitsplatz.timeneed != 0)
+            .SelectMany(arbeitsplatz => arbeitsplatz.waitinglist)
+            .Where(artikel => artikel.item == id)
+            .Sum(menge => menge.amount)
+            +
+            _pr.waitingliststock
+            .Where(fehlendeTeile => fehlendeTeile.id != 0)
+            .SelectMany(arbeitsplatz => arbeitsplatz.waitinglist)
+            .Where(artikel => artikel.item == id)
+            .Sum(menge => menge.amount);
+
+        }
+
+        public static int GetAnzahlArtikelInBearbeitung(int id)
+        {
+            return _pr.ordersinwork
+            .Where(artikel => artikel.item == id)
+            .Sum(menge => menge.amount);
+        }
+
+        public static int GetVergangenePeriode()
+        {
+            return _pr.period;
         }
     }
 }
