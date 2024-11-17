@@ -5,11 +5,11 @@ namespace CycleCoreERP_Backend.Data
 {
     public static class Stueckliste
     {
-        public static Dictionary<Produkt,
-        List<Bauteil>> Bauteile = new Dictionary<Produkt,
+        public static Dictionary<Fahrrad,
+        List<Bauteil>> Bauteile = new Dictionary<Fahrrad,
         List<Bauteil>>() {
             {
-                Data.Produkt.P1,
+                Data.Fahrrad.P1,
                 new List < Bauteil > () {
                     new Bauteil(1, 0),
                     new Bauteil(26, 1),
@@ -26,7 +26,7 @@ namespace CycleCoreERP_Backend.Data
                 }
             },
             {
-                Data.Produkt.P2,
+                Data.Fahrrad.P2,
                 new List < Bauteil > () {
                     new Bauteil(2, 0),
                     new Bauteil(26, 2),
@@ -43,7 +43,7 @@ namespace CycleCoreERP_Backend.Data
                 }
             },
             {
-                Data.Produkt.P3,
+                Data.Fahrrad.P3,
                 new List < Bauteil > () {
                     new Bauteil(3, 0),
                     new Bauteil(26, 3),
@@ -61,11 +61,11 @@ namespace CycleCoreERP_Backend.Data
             }
         };
 
-        public static Dictionary<Produkt,
-        List<Kaufteil>> Kaufteile = new Dictionary<Produkt,
+        public static Dictionary<Fahrrad,
+        List<Kaufteil>> Kaufteile = new Dictionary<Fahrrad,
         List<Kaufteil>>() {
             {
-                Data.Produkt.P1,
+                Data.Fahrrad.P1,
                 new List < Kaufteil > () {
                     new Kaufteil(21, 1, 1),
                     new Kaufteil(24, 1, 1),
@@ -107,7 +107,7 @@ namespace CycleCoreERP_Backend.Data
                 }
             },
             {
-                Data.Produkt.P2,
+                Data.Fahrrad.P2,
                 new List < Kaufteil > () {
                     new Kaufteil(22, 2, 1),
                     new Kaufteil(24, 2, 1),
@@ -149,7 +149,7 @@ namespace CycleCoreERP_Backend.Data
                 }
             },
             {
-                Data.Produkt.P3,
+                Data.Fahrrad.P3,
                 new List < Kaufteil > ()
                 {
                     new Kaufteil(23, 3, 1),
@@ -194,7 +194,7 @@ namespace CycleCoreERP_Backend.Data
         };
     }
 
-    public enum Produkt
+    public enum Fahrrad
     {
         P1 = 1,
         P2,

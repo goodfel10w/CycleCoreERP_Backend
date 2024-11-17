@@ -1,6 +1,6 @@
 using CycleCoreERP_Backend.Models;
 using CycleCoreERP_Backend.Service;
-using CycleCoreERP_Backend.Data
+using CycleCoreERP_Backend.Data;
 
 namespace CycleCoreERP_Backend.ProzessKalkulation
 {
@@ -42,10 +42,24 @@ namespace CycleCoreERP_Backend.ProzessKalkulation
 
             int ergebnis = 0;
 
-            return
+            return 0;
         }
 
+        public void BerechnungFahrraederAktuellePeriode()
+        {
+            foreach (Fahrrad fahrrad in Enum.GetValues(typeof(Fahrrad)))
+            {
+                var stuekliste = Data.Stueckliste.Bauteile[fahrrad];
 
+                foreach (var bauteil in stuekliste)
+                {
+
+                }
+
+            }
+
+
+        }
 
     }
 }
