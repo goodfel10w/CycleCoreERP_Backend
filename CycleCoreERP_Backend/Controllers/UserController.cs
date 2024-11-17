@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Xml.Linq;
-using System.Linq;
 
 namespace MvcMovie.Controllers
 {
@@ -22,18 +21,11 @@ namespace MvcMovie.Controllers
             // Überprüfen, ob die Datei existiert
             if (System.IO.File.Exists(filePath))
             {
+                // Lade die XML-Datei in ein XDocument
                 XDocument xdoc = XDocument.Load(filePath);
 
-                // Konvertiere das XML in eine Liste von Objekten (z.B. Dictionary oder benutzerdefinierte Klassen)
-                var data = xdoc.Descendants("Item")
-                               .Select(item => new
-                               {
-                                   Name = item.Element("Name")?.Value,
-                                   Value = item.Element("Value")?.Value
-                               }).ToList();
-
-                // Gib die Daten als JSON zurück
-                return Json(data);
+                // Gib das XML-Dokument als XML-String zurück
+                return Content(xdoc.ToString(), "application/xml");
             }
             else
             {
