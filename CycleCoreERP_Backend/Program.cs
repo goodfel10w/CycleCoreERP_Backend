@@ -26,11 +26,17 @@ app.MapControllerRoute(
 
 app.Run(); */
 
-using System;
-using System.Xml.Serialization;
-using CycleCoreERP_Backend.Models;
 
-static void Main(string[] args)
+using CycleCoreERP_Backend.Service;
+namespace CycleCoreERP_Backend.Main
 {
-    var xmlSerializer = new XmlSerializer(typeof(PeriodenResult));
+    class Programm
+    {
+        static void Main(string[] args)
+        {
+
+            const string xmlFilePath = "./xml-files/result/54_5_4result.xml";
+            XMLService.xmlRead(xmlFilePath);
+        }
+    }
 }
